@@ -30,13 +30,13 @@ public class JwtUtil {
                 + (1000L * 60 * 60 * 24 * 14)); //14 días
     }
 
-    public String getUserIdByToken(String token){
+    public static String getUserIdByToken(String token){
         JWTVerifier verifier = JWT.require(algorithm)
                 .withIssuer("SergioSM")
                 .build();
 
         DecodedJWT decoded = verifier.verify(token);
-        String userID = decoded.getClaim("userId").asString();
+        String userID = decoded.getClaim("userId").toString();
         return userID;
     }
 }
