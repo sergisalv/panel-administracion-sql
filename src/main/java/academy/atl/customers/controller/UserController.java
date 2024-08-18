@@ -34,7 +34,7 @@ public class UserController {
     }
 
     @PostMapping ("/user") //Agregar cliente
-    public void addUser(@RequestBody User user) {
+    public void register(@RequestBody User user) {
         service.addUser(user);
 
 
