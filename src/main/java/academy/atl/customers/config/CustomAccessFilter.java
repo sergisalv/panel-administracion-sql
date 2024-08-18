@@ -43,7 +43,8 @@ public class CustomAccessFilter implements Filter {
        };
 
        boolean authorized = Arrays.asList(availableUrl).contains(currentUrl);
-       if(authorized){
+       boolean isAnApiResource = currentUrl.startsWith("/api/");
+       if(authorized || !isAnApiResource){
            return true;
        }
 
