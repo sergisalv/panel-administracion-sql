@@ -1,5 +1,6 @@
 package academy.atl.customers.controller;
 
+import academy.atl.customers.Utils.JwtUtil;
 import academy.atl.customers.dto.RequestLogin;
 import academy.atl.customers.entities.User;
 import academy.atl.customers.services.AuthService;
@@ -16,10 +17,11 @@ public class AuthController {
     private AuthService service;
 
     @PostMapping("/auth/login")
-    public User login(@RequestBody RequestLogin request){
+    public String login(@RequestBody RequestLogin request){
         String email = request.getEmail();
         String password = request.getPassword();
-       User user = service.login(email,password);
-       return user;
+        User user = service.login(email,password);
+        String token = JwtUtil.generateToken(user);
+       return token;
     }
 }
