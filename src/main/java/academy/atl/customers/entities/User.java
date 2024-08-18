@@ -1,5 +1,6 @@
 package academy.atl.customers.entities;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -15,5 +16,6 @@ public class User {
     private String lastname;
     private String email;
     private String address;
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
 }
