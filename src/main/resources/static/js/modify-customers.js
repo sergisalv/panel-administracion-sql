@@ -25,7 +25,15 @@ function isNew(){
 }
 async function getCustomersById(id){
     let url = URL_SERVER + 'customer/' + id;
-    let response = await fetch(url);
+    let config = {
+        method: 'GET',
+        headers: {
+            'Content-Type' : 'application/json',
+            'Authorization' : sessionStorage.token
+        }
+    };
+    
+    let response = await fetch(url, config);
     let json =  await response.json();
 
     return(json);
@@ -62,7 +70,8 @@ function clickCreate(){
          "method": methodType,
          "body": JSON.stringify(customer),
          "headers":{
-            'Content-Type':'application/json'
+            'Content-Type':'application/json',
+            'Authorization' : sessionStorage.token
          }
 
      };

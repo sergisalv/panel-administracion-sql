@@ -54,6 +54,7 @@ async function renderCustomer(){
 }
 
 async function onClickEdit(id) {
+    
     window.location.href = 'modify-customer.html?id=' + id;
 }
 
